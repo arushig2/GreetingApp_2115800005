@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ModelLayer.Model;
+using BusinessLayer.Service;
+using BusinessLayer.Interface;
 using NLog;
+using RepositoryLayer.Service;
 
 namespace HelloGreetingApplication.Controllers
 {
@@ -9,7 +12,13 @@ namespace HelloGreetingApplication.Controllers
     [Route("[controller]")]
     public class HelloGreetingController : ControllerBase
     {
+        private readonly IGreetingBL _greetingBL;
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        public HelloGreetingController(IGreetingBL greetingBL)
+        {
+            _greetingBL = greetingBL;
+        }
 
         [HttpGet]
         public IActionResult Get()
@@ -93,6 +102,20 @@ namespace HelloGreetingApplication.Controllers
 
             logger.Info("DELETE response: {@Response}", responseModel);
             return Ok(responseModel);
+        }
+
+
+        [HttpGet("Greetings")]
+
+        public IActionResult Greeting()
+        {
+            logger.Info("GET request received.");
+            
+            var response = _greetingBL.Greet("Hello World");
+
+            logger.Info("GET response: {@Response}", response);
+
+            return Ok(response);
         }
     }
 }
