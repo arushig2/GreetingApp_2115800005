@@ -19,7 +19,10 @@ namespace HelloGreetingApplication.Controllers
         {
             _greetingBL = greetingBL;
         }
-
+        /// <summary>
+        /// Get method
+        /// </summary>
+        /// <returns>response model</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -33,7 +36,11 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("GET response: {@Response}", responseModel);
             return Ok(responseModel);
         }
-
+        /// <summary>
+        /// Post request
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns>response model</returns>
         [HttpPost]
         public IActionResult Post([FromBody] RequestModel requestModel)
         {
@@ -50,6 +57,11 @@ namespace HelloGreetingApplication.Controllers
             return Ok(responseModel);
         }
 
+        /// <summary>
+        /// Put request
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns>response model</returns>
         [HttpPut]
         public IActionResult Put([FromBody] RequestModel requestModel)
         {
@@ -65,6 +77,12 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("PUT response: {@Response}", responseModel);
             return Ok(responseModel);
         }
+
+        /// <summary>
+        /// Patch request
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns>response model</returns>
 
         [HttpPatch]
         public IActionResult Patch([FromBody] RequestModel requestModel)
@@ -87,7 +105,11 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("PATCH response: {@Response}", responseModel);
             return Ok(responseModel);
         }
-
+        /// <summary>
+        /// Delete request
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns>response model</returns>
         [HttpDelete]
         public IActionResult Delete([FromBody] RequestModel requestModel)
         {
@@ -104,6 +126,10 @@ namespace HelloGreetingApplication.Controllers
             return Ok(responseModel);
         }
 
+        /// <summary>
+        /// Greeting from service
+        /// </summary>
+        /// <returns>"Hello World</returns>
 
         [HttpGet("Greetings")]
 
@@ -115,6 +141,22 @@ namespace HelloGreetingApplication.Controllers
 
             logger.Info("GET response: {@Response}", response);
 
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Greeting by name based on attribute provided by user
+        /// </summary>
+        /// <param name="greetRequest"></param>
+        /// <returns>Greeting</returns>
+        [HttpPost("GreetingsByName")]
+
+        public IActionResult GreetingByName(GreetingRequestModel greetRequest)
+        {
+            logger.Info("GET request received.");
+
+            var response = _greetingBL.GreetByName(greetRequest);
+            logger.Info("GET response: {@Response}", response);
             return Ok(response);
         }
     }
