@@ -8,6 +8,6 @@ namespace BusinessLayer.Interface
 {
     public interface IGreetingBL
     {
-        string Greet(string message);
+        string Greet();
     }
 }

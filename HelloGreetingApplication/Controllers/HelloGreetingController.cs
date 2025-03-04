@@ -111,7 +111,7 @@ namespace HelloGreetingApplication.Controllers
         {
             logger.Info("GET request received.");
             
-            var response = _greetingBL.Greet("Hello World");
+            var response = _greetingBL.Greet();
 
             logger.Info("GET response: {@Response}", response);
 

@@ -10,9 +10,9 @@ namespace RepositoryLayer.Service
     public class GreetingRL : IGreetingRL
     {
         
-        public string Greet(string message)
+        public string Greet()
         {
-            return message;
+            return "Hello World";
         }
     }
 }
