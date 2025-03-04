@@ -243,3 +243,13 @@
 2025-03-04 22:30:38.3534 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.GreetingByName (HelloGreetingApplication) in 5.3482ms
 2025-03-04 22:30:38.3534 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.GreetingByName (HelloGreetingApplication)'
 2025-03-04 22:30:38.3534 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request finished HTTP/2 POST https://localhost:7016/HelloGreeting/GreetingsByName application/json 45 - 200 - text/plain;+charset=utf-8 14.4538ms
+2025-03-04 22:30:44.8330 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request starting HTTP/2 POST https://localhost:7016/HelloGreeting/GreetingsByName application/json 39
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executing endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.GreetingByName (HelloGreetingApplication)'
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Route matched with {action = "GreetingByName", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GreetingByName(ModelLayer.Model.GreetingRequestModel) on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication).
+2025-03-04 22:30:44.8375 | INFO | HelloGreetingApplication.Controllers.HelloGreetingController | GET request received.
+2025-03-04 22:30:44.8375 | INFO | HelloGreetingApplication.Controllers.HelloGreetingController | GET response: "Hello World"
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor | Executing OkObjectResult, writing value of type 'System.String'.
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.GreetingByName (HelloGreetingApplication) in 6.7887ms
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.GreetingByName (HelloGreetingApplication)'
+2025-03-04 22:30:44.8375 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request finished HTTP/2 POST https://localhost:7016/HelloGreeting/GreetingsByName application/json 39 - 200 - text/plain;+charset=utf-8 13.7040ms
+2025-03-04 23:00:04.9084 | INFO | Microsoft.Hosting.Lifetime | Application is shutting down...
