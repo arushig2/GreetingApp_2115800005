@@ -175,5 +175,26 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("POST response: {@Response}", response);
             return Ok(response);
         }
+
+        /// <summary>
+        /// Get greeting message by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Message</returns>
+        
+        [HttpGet("GetGreetingMessageByID")]
+
+        public IActionResult GetGreetingMessageByID(int id)
+        {
+            logger.Info("GET request received.");
+            var response = _greetingBL.GetGreetingMessageByID(id);
+            if(response == null)
+            {
+                logger.Error("No greeting message found for ID: {id}", id);
+                return NotFound("No greeting message found for ID: " + id);
+            }
+            logger.Info("GET response: {@Response}", response);
+            return Ok(response);
+        }
     }
 }

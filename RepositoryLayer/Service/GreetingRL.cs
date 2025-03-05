@@ -43,5 +43,15 @@ namespace RepositoryLayer.Service
             return result;
 
         }
+
+        public string GetGreetingMessageByID(int id)
+        {
+            var result = _dbContext.Greetings.FirstOrDefault<GreetingEntity>(g => g.Id == id);
+            if (result != null)
+            {
+                return result.Message;
+            }
+            return null;
+        }
     }
 }
