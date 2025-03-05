@@ -461,3 +461,12 @@ WHERE [g].[Id] = @__id_0
 2025-03-06 00:12:36.6215 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Route matched with {action = "GetGreetingMessageByID", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetGreetingMessageByID(Int32) on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication).
 2025-03-06 00:12:37.0853 | INFO | HelloGreetingApplication.Controllers.HelloGreetingController | GET request received.
 2025-03-06 00:12:38.7188 | INFO | Microsoft.EntityFrameworkCore.Infrastructure | Entity Framework Core 6.0.36 initialized 'GreetingDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.36' with options: None
+2025-03-06 00:12:40.5729 | INFO | Microsoft.EntityFrameworkCore.Database.Command | Executed DbCommand (154ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [g].[Id], [g].[Message]
+FROM [Greetings] AS [g]
+WHERE [g].[Id] = @__id_0
+2025-03-06 00:12:40.6223 | ERROR | HelloGreetingApplication.Controllers.HelloGreetingController | No greeting message found for ID: 3
+2025-03-06 00:12:40.6562 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor | Executing NotFoundObjectResult, writing value of type 'System.String'.
+2025-03-06 00:12:40.6673 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.GetGreetingMessageByID (HelloGreetingApplication) in 4035.9142ms
+2025-03-06 00:12:40.6673 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.GetGreetingMessageByID (HelloGreetingApplication)'
+2025-03-06 00:12:40.6673 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request finished HTTP/2 GET https://localhost:7016/HelloGreeting/GetGreetingMessageByID?id=3 - - - 404 - text/plain;+charset=utf-8 4188.9201ms
