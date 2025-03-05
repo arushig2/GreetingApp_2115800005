@@ -196,5 +196,25 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("GET response: {@Response}", response);
             return Ok(response);
         }
+
+        ///<summary>
+        ///Get messages list
+        ///</summary>
+        ///<returns>Messages list</returns>
+
+        [HttpGet("GetMessagesList")]
+
+        public IActionResult GetMessagesList()
+        {
+            logger.Info("GET request received.");
+            var response = _greetingBL.GetMessagesList();
+            if (response == null)
+            {
+                logger.Error("No greeting messages found");
+                return NotFound("No greeting messages found");
+            }
+            logger.Info("GET response: {@Response}", response);
+            return Ok(response);
+        }
     }
 }

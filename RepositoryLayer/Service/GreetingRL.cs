@@ -53,5 +53,11 @@ namespace RepositoryLayer.Service
             }
             return null;
         }
+
+        public List<string> GetMessagesList()
+        {
+            var result = _dbContext.Greetings.Select(g => g.Message).ToList();
+            return result;
+        }
     }
 }
