@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BusinessLayer.Interface;
 using ModelLayer.Model;
 using RepositoryLayer.Interface;
+using RepositoryLayer.Entity;
 
 namespace BusinessLayer.Service
 {
@@ -44,6 +45,12 @@ namespace BusinessLayer.Service
 
             return result;
 
+        }
+
+        public GreetingEntity SaveGreeting(GreetingMessageModel greeting)
+        {
+            var result = _greetingRL.SaveGreeting(greeting);
+            return result;
         }
     }
 }

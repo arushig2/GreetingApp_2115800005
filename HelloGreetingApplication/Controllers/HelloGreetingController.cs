@@ -136,7 +136,7 @@ namespace HelloGreetingApplication.Controllers
         public IActionResult Greeting()
         {
             logger.Info("GET request received.");
-            
+
             var response = _greetingBL.Greet();
 
             logger.Info("GET response: {@Response}", response);
@@ -157,6 +157,22 @@ namespace HelloGreetingApplication.Controllers
 
             var response = _greetingBL.GreetByName(greetRequest);
             logger.Info("GET response: {@Response}", response);
+            return Ok(response);
+        }
+
+        /// <summary>
+        ///  Add greeting message to database
+        /// </summary>
+        /// <param name="greetingMessage"></param>
+        /// <returns>Greeting Entity</returns>
+        [HttpPost]
+        [Route("AddGreetingMessage")]
+
+        public IActionResult SaveGreeting(GreetingMessageModel greetingMessage)
+        {
+            logger.Info("POST request received.");
+            var response = _greetingBL.SaveGreeting(greetingMessage);
+            logger.Info("POST response: {@Response}", response);
             return Ok(response);
         }
     }

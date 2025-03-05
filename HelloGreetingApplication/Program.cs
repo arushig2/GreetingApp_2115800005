@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using NLog;
 using NLog.Web;
 using BusinessLayer.Interface;
@@ -9,6 +5,8 @@ using BusinessLayer.Service;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 using System;
+using Microsoft.EntityFrameworkCore;
+using RepositoryLayer.Context;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 try
@@ -22,6 +20,11 @@ try
 
     builder.Services.AddScoped<IGreetingBL, GreetingBL>();
     builder.Services.AddScoped<IGreetingRL, GreetingRL>();
+
+    var connectionString = builder.Configuration.GetConnectionString("GreetingsDbConnection");
+
+    builder.Services.AddDbContext<GreetingDbContext>(options => options.UseSqlServer(connectionString));
+
 
 
     builder.Services.AddEndpointsApiExplorer();
