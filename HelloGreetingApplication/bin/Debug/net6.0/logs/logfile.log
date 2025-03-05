@@ -365,3 +365,24 @@ WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
 2025-03-05 23:50:02.0153 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.SaveGreeting (HelloGreetingApplication) in 4536.4068ms
 2025-03-05 23:50:02.0153 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.SaveGreeting (HelloGreetingApplication)'
 2025-03-05 23:50:02.0334 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request finished HTTP/2 POST https://localhost:7016/HelloGreeting/AddGreetingMessage application/json 35 - 200 - application/json;+charset=utf-8 4698.1381ms
+2025-03-05 23:50:29.8444 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request starting HTTP/2 POST https://localhost:7016/HelloGreeting/AddGreetingMessage application/json 38
+2025-03-05 23:50:29.8522 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executing endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.SaveGreeting (HelloGreetingApplication)'
+2025-03-05 23:50:29.8522 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Route matched with {action = "SaveGreeting", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult SaveGreeting(ModelLayer.Model.GreetingMessageModel) on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication).
+2025-03-05 23:50:29.8522 | INFO | HelloGreetingApplication.Controllers.HelloGreetingController | POST request received.
+2025-03-05 23:50:29.8522 | INFO | Microsoft.EntityFrameworkCore.Infrastructure | Entity Framework Core 6.0.36 initialized 'GreetingDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.36' with options: None
+2025-03-05 23:50:29.9579 | INFO | Microsoft.EntityFrameworkCore.Database.Command | Executed DbCommand (83ms) [Parameters=[@__greeting_Message_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [g].[Id], [g].[Message]
+FROM [Greetings] AS [g]
+WHERE [g].[Message] = @__greeting_Message_0
+2025-03-05 23:50:29.9728 | INFO | Microsoft.EntityFrameworkCore.Database.Command | Executed DbCommand (8ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Greetings] ([Message])
+VALUES (@p0);
+SELECT [Id]
+FROM [Greetings]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2025-03-05 23:50:29.9799 | INFO | HelloGreetingApplication.Controllers.HelloGreetingController | POST response: {"Id":2, "Message":"Hello, how are you?"}
+2025-03-05 23:50:29.9926 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor | Executing OkObjectResult, writing value of type 'RepositoryLayer.Entity.GreetingEntity'.
+2025-03-05 23:50:29.9926 | INFO | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.SaveGreeting (HelloGreetingApplication) in 140.86ms
+2025-03-05 23:50:29.9926 | INFO | Microsoft.AspNetCore.Routing.EndpointMiddleware | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.SaveGreeting (HelloGreetingApplication)'
+2025-03-05 23:50:29.9926 | INFO | Microsoft.AspNetCore.Hosting.Diagnostics | Request finished HTTP/2 POST https://localhost:7016/HelloGreeting/AddGreetingMessage application/json 38 - 200 - application/json;+charset=utf-8 151.1869ms
