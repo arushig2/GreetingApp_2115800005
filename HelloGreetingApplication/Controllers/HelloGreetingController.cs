@@ -239,5 +239,25 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("PUT response: {@Response}", response);
             return Ok(response);
         }
+
+        /// <summary>
+        /// Delete greeting message for ID
+        /// </summary>  
+        /// <returns>GreetingsEntity</returns>
+
+        [HttpDelete("DeleteByID")]
+
+        public IActionResult DeleteByID(int id)
+        {
+            logger.Info("DELETE request received.");
+            var response = _greetingBL.DeleteGreeting(id);
+            if (response == null)
+            {
+                logger.Error("No greeting message found for ID: {id}", id);
+                return NotFound("No greeting message found for ID: " + id);
+            }
+            logger.Info("DELETE response: {@Response}", response);
+            return Ok(response);
+        }
     }
 }
