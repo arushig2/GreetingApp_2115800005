@@ -216,5 +216,28 @@ namespace HelloGreetingApplication.Controllers
             logger.Info("GET response: {@Response}", response);
             return Ok(response);
         }
+
+        /// <summary>
+        /// Update greeting message for ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="message"></param>
+        /// <returns>FreetingEntity</returns>
+        /// 
+        [HttpPut("UpdateMessageForID")]
+
+        public IActionResult UpdateMessageForID(int id, string message)
+        {
+            logger.Info("PUT request received.");
+            var response = _greetingBL.UpdateGreeting(id, message);
+
+            if (response == null)
+            {
+                logger.Error("No greeting message found for ID: {id}", id);
+                return NotFound("No greeting message found for ID: " + id);
+            }
+            logger.Info("PUT response: {@Response}", response);
+            return Ok(response);
+        }
     }
 }
